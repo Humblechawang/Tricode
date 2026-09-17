@@ -1,68 +1,87 @@
-# Three of Us — Portfolio
+# TriCode — Portfolio
 
-A frontend-only portfolio site for Humble Chawang, Devyash Singh, and Ritika
-Ranjan — three CS students building product and AI work together. React,
-TypeScript, and Tailwind CSS. No backend, no database.
+A frontend-only portfolio for Humble Chawang, Devyash Singh, and Ritika Ranjan.
+The project is built with React, TypeScript, Vite, React Router, Framer Motion,
+and Tailwind CSS. It contains no backend or database.
 
-## Running it
+## Running locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the URL Vite prints (usually `http://localhost:5173`).
+Then open the local URL Vite prints in the terminal, usually:
 
-To build for production:
+```text
+http://localhost:5173
+```
+
+To create a production build:
 
 ```bash
 npm run build
-npm run preview   # serves the built dist/ folder locally
+npm run preview
 ```
 
 ## Editing content
 
-Everything about the three people and the featured project lives in one
-file: `src/data/portfolioData.ts`. Add a project, change a bio, or update a
-link there — no component code needs to change for content updates.
+Most of the portfolio content is centralized in:
 
-- `people` — name, role, bios, skills, and social links per person.
-- `projects` — title, description, category, contributors (by person `id`),
-  and tech tags. A project's `status` can be `"shipped"` or `"building"` —
-  `"building"` shows a dashed "Building" badge instead of implying it's
-  finished.
-- `projectCategories` — the filter tabs shown above the project grid.
-- `siteName` — the name shown in the nav and footer. Currently a
-  placeholder ("Three of Us") — change this to whatever you want the
-  collective to actually be called.
+- `src/data/portfolioData.ts`
 
-## Structure
+This file includes the main site data, such as:
 
-```
+- `people` — names, roles, bios, skills, and profile links
+- `projects` — project title, description, category, contributors, and status
+- `projectCategories` — tabs displayed in the work section
+- `siteName` and `siteTagline` — branding used across the app
+
+## Project structure
+
+```text
 src/
-  components/   UI components (Navbar, Hero, PersonCard, WorkSection, ...)
-  data/         portfolioData.ts — all real content
-  hooks/        useTheme.ts — light/dark mode, persisted to localStorage
-  types.ts      Person and Project types
-  index.css     design tokens (colors, both themes) + global styles
+  App.tsx
+  main.tsx
+  types.ts
+  index.css
+  components/
+    Footer.tsx
+    Navbar.tsx
+    PageTransition.tsx
+    PersonCard.tsx
+    PersonModal.tsx
+    Portrait.tsx
+    PortraitFrame.tsx
+    ProfileLinks.tsx
+    ProjectCard.tsx
+    ThemeToggle.tsx
+    TriCodeScene.tsx
+  data/
+    portfolioData.ts
+  hooks/
+    useTheme.ts
+  pages/
+    About.tsx
+    Contact.tsx
+    Home.tsx
+    People.tsx
+    PersonProfile.tsx
+    Work.tsx
+public/
+  portraits/
 ```
 
-## Notes on current content
+## Notes on the current content
 
-- Only one project is currently real and shippable: the AI Women's Safety
-  Application, built by Devyash and Humble at a hackathon. Ritika's entry
-  is marked "Building" rather than invented, since she doesn't have a
-  shipped project yet — update `projects` once she does.
-- Ritika's profile has no GitHub/LinkedIn link because none was provided.
-  Add one in `portfolioData.ts` under her `links` object if she has one.
-- Phone numbers from the original resumes were deliberately left off the
-  public site. Only email (and GitHub/LinkedIn where available) are shown.
-- Theme choice persists across visits via `localStorage` (not shared
-  between people — it's per-browser).
+- The site is designed as a static portfolio; no API or CMS is required.
+- The project data reflects the current team members and their active work.
+- The Ritika project entry is intentionally marked as `"building"` rather than implying it is shipped.
+- Theme choice is stored in `localStorage` and persists across visits.
+- Social and contact links are configured in the portfolio data file.
 
-## Accessibility
+## Accessibility and UX
 
-- Keyboard-navigable throughout; visible focus rings via `:focus-visible`.
-- The profile modal traps focus, closes on `Escape` or backdrop click, and
-  returns context via `aria-modal` / `aria-labelledby`.
-- Respects `prefers-reduced-motion`.
+- Keyboard-friendly navigation and visible focus states are included.
+- The profile modal supports close interactions and accessible labeling.
+- Motion preferences are respected via reduced-motion handling.

@@ -14,7 +14,7 @@ export const people: Person[] = [
     longBio:
       "Studying computer science at Dyal Singh College, University of Delhi, with a focus on the gap between how a product is designed and how it actually gets built. Runs user interviews and feature-prioritization work, then builds high-fidelity prototypes in Figma before validating direction with quick Python proofs of concept. Currently leading product strategy for an early-stage team effort, and co-built an AI-assisted safety app at a national hackathon.",
     initials: "HC",
-    photo: "/portraits/humble.jpg",
+    photo: "/photo .png",
     photoPosition: "72% 32%",
     frame: "slab",
     skills: [

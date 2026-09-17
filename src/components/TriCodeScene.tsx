@@ -64,7 +64,7 @@ function CoreNode({
   );
 }
 
-function OrbitRing() {
+function OrbitRing({ color }: { color: string }) {
   const ring = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
@@ -76,12 +76,30 @@ function OrbitRing() {
   return (
     <mesh ref={ring}>
       <torusGeometry args={[2.15, 0.012, 16, 180]} />
-      <meshBasicMaterial color="#6bb8ae" transparent opacity={0.45} />
+      <meshBasicMaterial color={color} transparent opacity={0.7} />
     </mesh>
   );
 }
 
-function Cluster() {
+function Cluster({ dark }: { dark: boolean }) {
+  const palette = dark
+    ? {
+        ring: "#6bb8ae",
+        line: "#6bb8ae",
+        nodeA: "#7fd4c9",
+        nodeB: "#4e8f88",
+        nodeC: "#c9ebe6",
+        sparkles: "#9ee8dc",
+      }
+    : {
+        ring: "#1a4c4a",
+        line: "#1a4c4a",
+        nodeA: "#1d5955",
+        nodeB: "#0d3d3b",
+        nodeC: "#8bd7d1",
+        sparkles: "#1d5955",
+      };
+
   const connections = useMemo(
     () => [
       [nodes[0], nodes[1]] as const,
@@ -93,33 +111,49 @@ function Cluster() {
 
   return (
     <group position={[1.85, -0.15, 0]}>
-      <OrbitRing />
+      <OrbitRing color={palette.ring} />
       {connections.map((points, index) => (
         <Line
           key={index}
           points={[...points]}
-          color="#6bb8ae"
+          color={palette.line}
           lineWidth={1.1}
           transparent
-          opacity={0.55}
+          opacity={dark ? 0.55 : 0.8}
         />
       ))}
-      <CoreNode position={nodes[0]} color="#7fd4c9" scale={1.05} />
-      <CoreNode position={nodes[1]} color="#4e8f88" />
-      <CoreNode position={nodes[2]} color="#c9ebe6" scale={0.92} />
+      <CoreNode position={nodes[0]} color={palette.nodeA} scale={1.05} />
+      <CoreNode position={nodes[1]} color={palette.nodeB} />
+      <CoreNode position={nodes[2]} color={palette.nodeC} scale={0.92} />
       <Sparkles
         count={80}
         scale={[7, 5, 4]}
-        size={2.4}
-        speed={0.35}
-        opacity={0.55}
-        color="#9ee8dc"
+        size={dark ? 2.4 : 2.8}
+        speed={dark ? 0.35 : 0.45}
+        opacity={dark ? 0.55 : 0.9}
+        color={palette.sparkles}
       />
     </group>
   );
 }
 
 export default function TriCodeScene({ dark }: { dark: boolean }) {
+  const colors = dark
+    ? {
+        background: "#0c0e11",
+        fog: "#0c0e11",
+        ambient: 0.35,
+        directional: "#e8fff9",
+        point: "#6bb8ae",
+      }
+    : {
+        background: "#f5f5f7",
+        fog: "#f5f5f7",
+        ambient: 0.7,
+        directional: "#dffaf6",
+        point: "#154f4d",
+      };
+
   return (
     <Canvas
       dpr={[1, 1.75]}
@@ -127,12 +161,12 @@ export default function TriCodeScene({ dark }: { dark: boolean }) {
       gl={{ antialias: true, alpha: true }}
       style={{ background: "transparent" }}
     >
-      <color attach="background" args={[dark ? "#0c0e11" : "#f3f1ec"]} />
-      <fog attach="fog" args={[dark ? "#0c0e11" : "#f3f1ec", 7.5, 16]} />
-      <ambientLight intensity={dark ? 0.35 : 0.7} />
-      <directionalLight position={[4, 6, 3]} intensity={dark ? 1.3 : 0.9} color="#e8fff9" />
-      <pointLight position={[-3, -2, 2]} intensity={1.1} color="#6bb8ae" />
-      <Cluster />
+      <color attach="background" args={[colors.background]} />
+      <fog attach="fog" args={[colors.fog, 7.5, 16]} />
+      <ambientLight intensity={colors.ambient} />
+      <directionalLight position={[4, 6, 3]} intensity={dark ? 1.3 : 0.9} color={colors.directional} />
+      <pointLight position={[-3, -2, 2]} intensity={dark ? 1.1 : 1.4} color={colors.point} />
+      <Cluster dark={dark} />
       <CameraRig />
     </Canvas>
   );
