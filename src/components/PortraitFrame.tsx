@@ -35,8 +35,8 @@ export default function PortraitFrame({
   const frameClass =
     person.frame === "prism"
       ? "frame-prism"
-      : person.frame === "lens"
-        ? "frame-lens"
+      : person.frame === "panel"
+        ? "frame-panel"
         : "frame-slab";
 
   return (

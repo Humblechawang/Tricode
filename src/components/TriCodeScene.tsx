@@ -81,24 +81,15 @@ function OrbitRing({ color }: { color: string }) {
   );
 }
 
-function Cluster({ dark }: { dark: boolean }) {
-  const palette = dark
-    ? {
-        ring: "#6bb8ae",
-        line: "#6bb8ae",
-        nodeA: "#7fd4c9",
-        nodeB: "#4e8f88",
-        nodeC: "#c9ebe6",
-        sparkles: "#9ee8dc",
-      }
-    : {
-        ring: "#1a4c4a",
-        line: "#1a4c4a",
-        nodeA: "#1d5955",
-        nodeB: "#0d3d3b",
-        nodeC: "#8bd7d1",
-        sparkles: "#1d5955",
-      };
+function Cluster() {
+  const palette = {
+    ring: "#71717a",
+    line: "#71717a",
+    nodeA: "#18181b",
+    nodeB: "#52525b",
+    nodeC: "#a1a1aa",
+    sparkles: "#71717a",
+  };
 
   const connections = useMemo(
     () => [
@@ -119,7 +110,7 @@ function Cluster({ dark }: { dark: boolean }) {
           color={palette.line}
           lineWidth={1.1}
           transparent
-          opacity={dark ? 0.55 : 0.8}
+          opacity={0.55}
         />
       ))}
       <CoreNode position={nodes[0]} color={palette.nodeA} scale={1.05} />
@@ -128,31 +119,23 @@ function Cluster({ dark }: { dark: boolean }) {
       <Sparkles
         count={80}
         scale={[7, 5, 4]}
-        size={dark ? 2.4 : 2.8}
-        speed={dark ? 0.35 : 0.45}
-        opacity={dark ? 0.55 : 0.9}
+        size={2.4}
+        speed={0.35}
+        opacity={0.55}
         color={palette.sparkles}
       />
     </group>
   );
 }
 
-export default function TriCodeScene({ dark }: { dark: boolean }) {
-  const colors = dark
-    ? {
-        background: "#0c0e11",
-        fog: "#0c0e11",
-        ambient: 0.35,
-        directional: "#e8fff9",
-        point: "#6bb8ae",
-      }
-    : {
-        background: "#f5f5f7",
-        fog: "#f5f5f7",
-        ambient: 0.7,
-        directional: "#dffaf6",
-        point: "#154f4d",
-      };
+export default function TriCodeScene() {
+  const colors = {
+    background: "#f7f6f0",
+    fog: "#f7f6f0",
+    ambient: 0.7,
+    directional: "#ffffff",
+    point: "#71717a",
+  };
 
   return (
     <Canvas
@@ -164,9 +147,9 @@ export default function TriCodeScene({ dark }: { dark: boolean }) {
       <color attach="background" args={[colors.background]} />
       <fog attach="fog" args={[colors.fog, 7.5, 16]} />
       <ambientLight intensity={colors.ambient} />
-      <directionalLight position={[4, 6, 3]} intensity={dark ? 1.3 : 0.9} color={colors.directional} />
-      <pointLight position={[-3, -2, 2]} intensity={dark ? 1.1 : 1.4} color={colors.point} />
-      <Cluster dark={dark} />
+      <directionalLight position={[4, 6, 3]} intensity={0.9} color={colors.directional} />
+      <pointLight position={[-3, -2, 2]} intensity={1.1} color={colors.point} />
+      <Cluster />
       <CameraRig />
     </Canvas>
   );

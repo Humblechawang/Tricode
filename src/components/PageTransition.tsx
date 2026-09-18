@@ -8,6 +8,7 @@ export default function PageTransition({ children }: { children: ReactNode }) {
 
   return (
     <motion.div
+      className="flex min-h-0 flex-1 flex-col"
       initial={reduce ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       exit={reduce ? undefined : { opacity: 0, y: -8 }}

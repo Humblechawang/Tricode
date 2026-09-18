@@ -20,14 +20,16 @@ export default function Portrait({ person, className = "" }: Props) {
           alt={`Portrait of ${person.name}`}
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: person.photoPosition ?? "center" }}
+          loading="lazy"
+          decoding="async"
           onError={() => setFailed(true)}
         />
       ) : (
         <div className="portrait-grid absolute inset-0 flex flex-col items-center justify-center">
-          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/40 bg-bg/70 text-2xl font-semibold tracking-wide text-accent backdrop-blur-sm">
+          <div className="flex h-24 w-24 items-center justify-center rounded-[14px] border border-border bg-bg text-2xl font-semibold tracking-wide text-text">
             {person.initials}
           </div>
-          <p className="mt-4 text-[11px] uppercase tracking-[0.28em] text-text-muted">
+          <p className="meta-label mt-4">
             Photo space
           </p>
         </div>

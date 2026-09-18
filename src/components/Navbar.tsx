@@ -1,22 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 import { siteName } from "../data/portfolioData";
 
 const links = [
-  { label: "People", to: "/people" },
+  { label: "Team", to: "/team" },
   { label: "Work", to: "/work" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
+  { label: "Post", to: "/post" },
 ];
 
-type Props = {
-  theme: "light" | "dark";
-  onToggleTheme: () => void;
-};
-
-export default function Navbar({ theme, onToggleTheme }: Props) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -56,7 +49,7 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
             <NavLink
               key={link.to}
               to={link.to}
-              end={link.to === "/people"}
+              end={link.to === "/team"}
               className={({ isActive }) =>
                 `relative text-[13px] tracking-tight transition-colors hover:text-text ${
                   isActive ? "nav-link-active font-medium text-text" : "text-text-muted"
@@ -68,18 +61,15 @@ export default function Navbar({ theme, onToggleTheme }: Props) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-          <button
+        <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-text md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-[14px] border border-border text-text md:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X size={16} /> : <Menu size={16} />}
-          </button>
-        </div>
+        </button>
       </div>
 
       {menuOpen && (

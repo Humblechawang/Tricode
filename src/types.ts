@@ -8,15 +8,28 @@ export type Person = {
   /** Optional portrait. Drop a file in `public/portraits/` and set this path. */
   photo?: string;
   photoPosition?: string;
-  frame: "slab" | "prism" | "lens";
+  frame: "slab" | "prism" | "panel";
   skills: string[];
   learning?: string[];
   links: {
     github?: string;
     linkedin?: string;
+    x?: string;
     website?: string;
     email?: string;
   };
+};
+
+export type Post = {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  excerpt: string;
+  cover: string;
+  coverPosition?: string;
+  story: string[];
+  note: string;
 };
 
 export type ProjectStatus = "shipped" | "building";

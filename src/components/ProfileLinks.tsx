@@ -7,7 +7,7 @@ export default function ProfileLinks({ person }: { person: Person }) {
       {person.links.email && (
         <a
           href={`mailto:${person.links.email}`}
-          className="inline-flex h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-medium text-accent-contrast"
+          className="inline-flex h-10 items-center gap-2 border-b border-text text-sm font-medium text-text"
         >
           <Mail size={14} /> Email
         </a>
@@ -17,7 +17,7 @@ export default function ProfileLinks({ person }: { person: Person }) {
           href={person.links.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm text-text transition-colors hover:bg-surface-raised"
+          className="inline-flex h-10 items-center gap-2 border-b border-border text-sm text-text transition-colors hover:border-text"
         >
           <Github size={14} /> GitHub
         </a>
@@ -27,7 +27,7 @@ export default function ProfileLinks({ person }: { person: Person }) {
           href={person.links.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm text-text transition-colors hover:bg-surface-raised"
+          className="inline-flex h-10 items-center gap-2 border-b border-border text-sm text-text transition-colors hover:border-text"
         >
           <Linkedin size={14} /> LinkedIn
         </a>

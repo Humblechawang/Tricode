@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 
 const process = [
@@ -26,37 +27,63 @@ const process = [
 export default function About() {
   return (
     <PageTransition>
-      <section className="px-6 pb-28 pt-32">
-        <div className="mx-auto max-w-content">
-          <p className="text-sm text-text-muted">About</p>
-          <h1 className="mt-2 max-w-2xl font-display text-4xl font-semibold tracking-tight text-text md:text-5xl">
-            How we work.
-          </h1>
-          <div className="mt-12 grid gap-16 md:grid-cols-2">
-            <div>
-              <p className="text-[17px] leading-7 text-text-muted">
-                We’re three CS students at Dyal Singh College, University of
-                Delhi. Early in our careers, and clear about it. The process is
-                the point: research before design, design before code, and a
-                bias toward shipping.
+      <section className="viewport-page px-5 sm:px-6">
+        <div className="mx-auto flex min-h-[calc(100dvh-72px)] w-full max-w-content items-center py-20 md:py-16">
+          <div className="grid w-full items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <Link
+              to="/team"
+              className="group mx-auto block w-full max-w-[460px] rounded-[14px] border border-transparent p-2 transition-colors hover:border-text hover:bg-text focus:border-text focus:bg-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text/30 active:border-text active:bg-text lg:mx-0"
+              aria-label="View the TriCode team"
+            >
+              <div className="overflow-hidden rounded-[14px] border border-border bg-bg transition-transform duration-300 group-hover:scale-[1.01]">
+                <img
+                  src="/group1.png"
+                  alt="TriCode team collaborating around a laptop"
+                  className="aspect-[4/5] max-h-[420px] w-full object-cover object-center"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <p className="mt-3 px-1 text-xs text-text-muted transition-colors group-hover:text-bg group-focus:text-bg group-active:text-bg">
+                TriCode studio · Delhi
               </p>
-              <p className="mt-5 text-[17px] leading-7 text-text-muted">
-                A hackathon weekend proved we can take an idea from a whiteboard
-                to something someone can actually use. We’re looking for the
-                next problem worth that kind of week.
-              </p>
+            </Link>
+
+            <div className="max-w-2xl">
+              <div>
+                <p className="meta-label">About</p>
+                <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-text md:text-5xl">
+                  How we build.
+                </h1>
+              </div>
+              <div className="mt-6 max-w-xl space-y-4 text-base leading-7 text-text-muted">
+                <p>
+                  TriCode is an independent design and engineering collective. We turn complex technical problems into clean, high-utility digital products—grounded in research, refined in code, and built to ship.
+                </p>
+                <p>
+                  Whether building internal products, conducting open data research, or documenting our journey, we operate with a single rule: research before polish, design before scale, and ship before perfection.
+                </p>
+              </div>
             </div>
-            <ol>
-              {process.map((item) => (
-                <li key={item.step} className="border-t border-border py-6 first:border-t-0 first:pt-0">
-                  <p className="text-xs text-text-muted">{item.step}</p>
-                  <h2 className="mt-1 text-xl font-semibold tracking-tight text-text">
-                    {item.title}
-                  </h2>
-                  <p className="mt-2 text-sm leading-6 text-text-muted">{item.detail}</p>
-                </li>
-              ))}
-            </ol>
+          </div>
+        </div>
+
+        <div className="mx-auto min-h-[100dvh] w-full max-w-content border-t border-border py-16 md:py-20">
+          <div className="grid gap-4 lg:grid-cols-4">
+            <div className="lg:col-span-4">
+              <p className="meta-label">Process</p>
+            </div>
+            <ol className="contents">
+                {process.map((item) => (
+                  <li key={item.step} className="border-t border-border py-4">
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-[11px] font-medium tracking-[0.18em] text-text-muted">{item.step}</span>
+                      <h2 className="text-lg font-semibold tracking-tight text-text">{item.title}</h2>
+                    </div>
+                    <p className="mt-4 text-sm leading-6 text-text-muted">{item.detail}</p>
+                  </li>
+                ))}
+              </ol>
           </div>
         </div>
       </section>

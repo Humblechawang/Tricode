@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { people, projectCategories, projects } from "../data/portfolioData";
+import { teamMembers, projectCategories, projects } from "../data/portfolioData";
 import PageTransition from "../components/PageTransition";
 import ProjectCard from "../components/ProjectCard";
 
@@ -18,29 +18,29 @@ export default function Work() {
 
   return (
     <PageTransition>
-      <section className="px-6 pb-28 pt-32">
-        <div className="mx-auto max-w-content">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+      <section className="viewport-page px-6 pb-8 pt-24 md:pt-20">
+        <div className="mx-auto flex w-full max-w-content flex-1 flex-col">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">
-              <p className="text-sm text-text-muted">Work</p>
-              <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-text md:text-5xl">
+              <p className="meta-label">Work</p>
+              <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight text-text md:text-4xl">
                 Selected work.
               </h1>
-              <p className="mt-4 text-[17px] leading-7 text-text-muted">
+              <p className="mt-2 text-sm leading-6 text-text-muted">
                 One shipped project so far. We add to this list when something
                 is real.
               </p>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-4 border-b border-border pb-2">
               {projectCategories.map((item) => (
                 <button
                   key={item}
                   type="button"
                   onClick={() => setCategory(item)}
-                  className={`h-9 rounded-full px-4 text-sm ${
+                    className={`border-b px-1 pb-2 text-sm ${
                     category === item
-                      ? "bg-accent text-accent-contrast"
-                      : "text-text-muted hover:text-text"
+                      ? "border-text text-text"
+                      : "border-transparent text-text-muted hover:border-text hover:text-text"
                   }`}
                 >
                   {item}
@@ -49,21 +49,21 @@ export default function Work() {
             </div>
           </div>
 
-          <div className="mt-14">
+          <div className="mt-8 min-h-0 flex-1">
             {visibleProjects.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2">
                 {visibleProjects.map((project) => (
                   <ProjectCard
                     key={project.id}
                     project={project}
-                    contributors={people.filter((person) =>
+                    contributors={teamMembers.filter((person) =>
                       project.contributorIds.includes(person.id)
                     )}
                   />
                 ))}
               </div>
             ) : (
-              <p className="border-t border-border py-16 text-text-muted">
+              <p className="border-t border-border py-8 text-text-muted">
                 Nothing in this category yet.
               </p>
             )}

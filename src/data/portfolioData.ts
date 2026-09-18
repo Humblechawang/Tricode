@@ -1,10 +1,77 @@
-import type { Person, Project } from "../types";
+import type { Person, Post, Project } from "../types";
 
 export const siteName = "TriCode";
 
 export const siteTagline = "Three minds. One practice.";
 
-export const people: Person[] = [
+export const posts: Post[] = [
+  {
+    id: "studio-diary",
+    title: "Studio diary: building with intent",
+    category: "Updates",
+    date: "18 Sep 2026",
+    excerpt:
+      "A behind-the-scenes look at how we shape rough ideas into user-first product decisions and prototypes that actually hold up in conversation.",
+    cover: "/portraits/Humble.png",
+    coverPosition: "center 18%",
+    note: "We begin with the problem, not the interface.",
+    story: [
+      "Every project starts with a conversation about behavior, friction, and the small moments that make an experience feel trustworthy. We try to listen before we design, because the strongest interfaces usually come from understanding the work people already do.",
+      "From there, we move into sketches, prototypes, and quick experiments. The goal is not to chase perfection in the first pass, but to expose decision points early and avoid building the wrong thing in a polished shell.",
+      "The final product is always a product of testing, revision, and shared language. Design and engineering are one conversation when the goal is clarity.",
+    ],
+  },
+  {
+    id: "maker-log",
+    title: "Maker log: tools, thinking, and patterns",
+    category: "Engineering",
+    date: "12 Sep 2026",
+    excerpt:
+      "The rituals we use to stay focused while building systems, from prompt experiments and backend builds to interface polish and code reviews.",
+    cover: "/portraits/devyash.png",
+    coverPosition: "center 18%",
+    note: "Systems grow stronger when attention is shared and friction is visible.",
+    story: [
+      "We treat tools as part of the process, not just the output. A clean backend, a deliberate API flow, and a stable review habit help the product stay coherent as the idea evolves.",
+      "When we build with AI, we use it as a collaborator for iteration rather than a replacement for judgment. The best outputs come from pairing fast experimentation with clear constraints and a strong understanding of what we want to improve.",
+      "The real craft is in noticing what keeps getting repeated and refining it. That is what turns a prototype into a reliable product.",
+    ],
+  },
+  {
+    id: "learning-archive",
+    title: "Learning archive: curiosity before certainty",
+    category: "Design",
+    date: "04 Sep 2026",
+    excerpt:
+      "What we are learning right now in data, ML, and the math behind better decisions — notes from the process, not the finished answer.",
+    cover: "/portraits/ritika.png",
+    coverPosition: "center 18%",
+    note: "The work is less about being finished and more about being teachable.",
+    story: [
+      "We believe in learning in public. A half-finished experiment can still teach more than a polished presentation, especially when we document what is confusing and what we are trying to prove.",
+      "Across data science and product work, the same challenge often appears: turning noisy signals into useful understanding. We work through that by building small, testable pieces and letting the evidence shape the next move.",
+      "Curiosity is still the best design system we have. It keeps us honest, adaptable, and willing to revise our assumptions before they become fixed beliefs.",
+    ],
+  },
+  {
+      id: "team-culture",
+      title: "The rituals behind better collaboration",
+      category: "Culture",
+      date: "28 Aug 2026",
+      excerpt:
+        "The small habits that help a growing team make room for clear thinking, generous critique, and ambitious ideas.",
+      cover: "/portraits/Humble.png",
+      coverPosition: "center 62%",
+      note: "Good work gets stronger when everyone has room to contribute.",
+      story: [
+        "Culture is not a slogan on a wall. It is the way a team makes decisions when the brief is incomplete and the deadline is real.",
+        "We make space for direct feedback, focused solo time, and the kind of conversations that turn a rough thought into something the whole team can carry.",
+        "Those rituals keep the work human while giving the product the structure it needs to move forward.",
+      ],
+    },
+];
+
+export const teamMembers: Person[] = [
   {
     id: "humble",
     name: "Humble Chawang",
@@ -68,7 +135,7 @@ export const people: Person[] = [
     initials: "RR",
     photo: "/portraits/ritika.png",
     photoPosition: "center 18%",
-    frame: "lens",
+    frame: "panel",
     skills: ["Python", "C++", "Event Coordination", "Team Leadership"],
     learning: ["Machine Learning", "Deep Learning"],
     links: {
