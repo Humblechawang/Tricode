@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 
 const process = [
@@ -30,24 +29,20 @@ export default function About() {
       <section className="viewport-page px-5 sm:px-6">
         <div className="mx-auto flex min-h-[calc(100dvh-72px)] w-full max-w-content items-center py-20 md:py-16">
           <div className="grid w-full items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <Link
-              to="/team"
-              className="group mx-auto block w-full max-w-[460px] rounded-[14px] border border-transparent p-2 transition-colors hover:border-text hover:bg-text focus:border-text focus:bg-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text/30 active:border-text active:bg-text lg:mx-0"
-              aria-label="View the TriCode team"
-            >
-              <div className="overflow-hidden rounded-[14px] border border-border bg-bg transition-transform duration-300 group-hover:scale-[1.01]">
+            <div className="mx-auto block w-full max-w-[460px] lg:mx-0">
+              <div className="aspect-[4/5] max-h-[420px] w-full overflow-hidden rounded-[14px] border border-border bg-bg">
                 <img
-                  src="/group1.png"
+                  src="/images/group-photo.jpg"
                   alt="TriCode team collaborating around a laptop"
-                  className="aspect-[4/5] max-h-[420px] w-full object-cover object-center"
+                  className="h-full w-full object-cover object-center"
                   loading="eager"
                   decoding="async"
                 />
               </div>
-              <p className="mt-3 px-1 text-xs text-text-muted transition-colors group-hover:text-bg group-focus:text-bg group-active:text-bg">
+              <p className="mt-3 px-1 text-xs text-text-muted">
                 TriCode studio · Delhi
               </p>
-            </Link>
+            </div>
 
             <div className="max-w-2xl">
               <div>
